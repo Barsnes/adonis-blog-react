@@ -12,3 +12,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App {
+  display: grid;
+  padding: 2rem;
+  text-align: center;
+}
+
+button {
+  margin: auto;
+  border: 0;
+  background-color: #6a6;
+  font-size: 1rem;
+  color: #FFF;
+  padding: .7rem 2rem;
+  outline: none;
+  border-radius: 10px;
+}
+
+.cancel {
+  background-color: grey
+}
+
+.danger {
+  background-color: red;
+  padding: .3rem 1rem;
+  font-size: .9rem;
+}
+
+input, textarea {
+  display: block;
+  margin: 1rem auto;
+  width: 300px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: .5rem
+}
