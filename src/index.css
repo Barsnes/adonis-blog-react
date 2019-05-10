@@ -48,3 +48,11 @@ input, textarea {
   border-radius: 5px;
   padding: .5rem
 }
+
+.blog {
+  background-color: #FFF
+}
+
+.addBlog {
+  padding-bottom: 1rem;
+}

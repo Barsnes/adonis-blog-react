@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { animated } from 'react-spring'
+import { Transition } from 'react-spring/renderprops'
+
 class AddBlog extends React.Component{
   constructor(){
     super()
@@ -22,7 +25,7 @@ class AddBlog extends React.Component{
 
   render(){
     return(
-      <div style={this.props.visible ? { display: 'none' } : { display: 'block' }}>
+      <div className='addBlog'>
         <h1>Add a blog</h1>
         <input onChange={this.handleFieldChange} name='title'></input>
         <textarea onChange={this.handleFieldChange} name='body'></textarea>

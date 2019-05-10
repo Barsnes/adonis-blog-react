@@ -4,6 +4,7 @@ import Blog from './components/Blog'
 import AddBlog from './components/AddBlog'
 
 import ApiService from './apiService';
+import { Transition } from 'react-spring/renderprops'
 
 class App extends React.Component {
   constructor(){
@@ -12,12 +13,15 @@ class App extends React.Component {
     this.apiService = new ApiService();
 
     this.state = {
-      showCreateForm: true,
+      showCreateForm: false,
       blogs: []
     }
+
+    this.duration = 0;
   }
 
   componentWillMount() {
+    this.duration = 0;
     this.fetchBlogs();
   }
 
@@ -56,14 +60,21 @@ deleteBlog = (id) => {
       <div className="App">
         <button
           onClick={this.toggleCreateForm}
-          className={this.state.showCreateForm ? '' : 'cancel'}
+          className={this.state.showCreateForm ? 'cancel' : ''}
           >
-          {this.state.showCreateForm ? 'Add new blog post' : 'Cancel'}
+          {this.state.showCreateForm ? 'Cancel' : 'Add new blog post'}
         </button>
 
-        <AddBlog storeBlog={this.storeBlog} visible={this.state.showCreateForm} />
+        <Transition
+          items={this.state.showCreateForm}
+          from={{ height: 0 }}
+          enter={{ height: 'auto' }}
+          leave={{ height: 0 }}>
+          {show => show && (props => <div style={props}><AddBlog storeBlog={this.storeBlog} visible={this.state.showCreateForm} /> </div>)}
+        </Transition>
+
         {this.state.blogs.map((blog) =>
-          <Blog blog={blog} key={blog.id} deleteBlog={this.deleteBlog} />
+          <Blog delay={this.duration += 500} blog={blog} key={blog.id} deleteBlog={this.deleteBlog} />
         )}
       </div>
     );
